@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kandidat/src/blocs/user_list_bloc.dart';
 import 'package:kandidat/src/models/user_model.dart';
+import 'package:kandidat/src/ui/user_detail.dart';
 
 class UserList extends StatefulWidget {
 
@@ -61,9 +62,32 @@ class UserListState extends State<UserList> {
               backgroundColor: Colors.transparent,
             ),
             title: Text(login),
+            onTap: () {
+              openUserDetail(user, index);
+            },
           );
         },
     );
   }
 
+  openUserDetail(UserModel user, int index) {
+    final page = UserDetail();
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(builder:(context) {
+              return page;
+            }),
+    );
+  }
+
 }
+
+
+
+
+
+
+
+
+
