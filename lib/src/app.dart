@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kandidat/src/ui/user_list.dart';
 
 class App extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class App extends StatelessWidget {
       theme: ThemeData.dark(),
       home: Scaffold(
         body: Center(
-          child: Text("There will be a list"),
+          child: UserList(),
         ),
       ),
     );
