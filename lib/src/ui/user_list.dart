@@ -50,8 +50,18 @@ class UserListState extends State<UserList> {
     return ListView.builder(
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {
-          final login = snapshot.data[index].login;
-          return Text(login);
+          final user = snapshot.data[index];
+          final login = user.login;
+          final avatarURL = user.avatarURL;
+          return ListTile(
+            contentPadding: EdgeInsets.only(bottom: 20, left: 20),
+            leading: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(avatarURL),
+              backgroundColor: Colors.transparent,
+            ),
+            title: Text(login),
+          );
         },
     );
   }
