@@ -5,4 +5,6 @@ class Repository {
   final githubApiProvider = GithubApiProvider();
 
   Future<List<UserModel>> fetchUsers() => githubApiProvider.fetchUsers();
+  Future<UserModel> fetchUser(int id) => githubApiProvider.fetchUser(id);
+
 }

@@ -9,19 +9,31 @@ class GithubApiProvider {
   final token = "2c3448408fced55050d749406f9c43679fa49c26";
 
   Future<List<UserModel>> fetchUsers() async {
-
     final response = await client.get('https://api.github.com/users');
 
-
     if (response.statusCode >= 200 && response.statusCode <= 300) {
-
       final responseJSON = jsonDecode(response.body) as List;
       List<UserModel> users = responseJSON.map((e) => UserModel.fromJSON(e)).toList();
-
-      print(users[0].id);
       return users;
+
+    } else {
+      throw Exception('Unable to fetch Users');
+    }
+
+  }
+
+
+  Future<UserModel> fetchUser(int id) async {
+    final response = await client.get('https://api.github.com/users');
+
+    if (response.statusCode >= 200 && response.statusCode <= 300) {
+      final responseJSON = jsonDecode(response.body);
+      UserModel users =UserModel.fromJSON(responseJSON);
+      return users;
+
     } else {
       throw Exception('Unable to fetch Users');
     }
   }
+
 }

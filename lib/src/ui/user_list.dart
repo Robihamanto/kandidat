@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kandidat/src/blocs/user_detail_provider.dart';
 import 'package:kandidat/src/blocs/user_list_bloc.dart';
 import 'package:kandidat/src/models/user_model.dart';
 import 'package:kandidat/src/ui/user_detail.dart';
@@ -55,13 +56,14 @@ class UserListState extends State<UserList> {
           final login = user.login;
           final avatarURL = user.avatarURL;
           return ListTile(
-            contentPadding: EdgeInsets.only(bottom: 20, left: 20),
+            contentPadding: EdgeInsets.all(10),
+            title: Text(login),
             leading: CircleAvatar(
               radius: 30,
               backgroundImage: NetworkImage(avatarURL),
               backgroundColor: Colors.transparent,
             ),
-            title: Text(login),
+            trailing: Icon(Icons.chevron_right),
             onTap: () {
               openUserDetail(user, index);
             },
@@ -71,7 +73,12 @@ class UserListState extends State<UserList> {
   }
 
   openUserDetail(UserModel user, int index) {
-    final page = UserDetail();
+    final page = UserDetailProvider(
+      child: UserDetail(
+        id: user.id,
+        user: user,
+      ),
+    );
 
     Navigator.push(
         context,
