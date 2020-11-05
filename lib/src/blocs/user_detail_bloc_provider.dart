@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kandidat/src/blocs/user_detail_bloc.dart';
 
-class UserDetailProvider extends InheritedWidget {
+class UserDetailBlocProvider extends InheritedWidget {
 
   final UserDetailBloc bloc;
 
-  UserDetailProvider({Key key, Widget child})
+  UserDetailBlocProvider({Key key, Widget child})
       : bloc = UserDetailBloc(),
         super(key: key, child: child);
 
@@ -14,8 +14,8 @@ class UserDetailProvider extends InheritedWidget {
 
 
   static UserDetailBloc of(BuildContext context){
-    return (context.inheritFromWidgetOfExactType(UserDetailProvider)
-        as UserDetailProvider).bloc;
+    return (context.inheritFromWidgetOfExactType(UserDetailBlocProvider)
+        as UserDetailBlocProvider).bloc;
   }
 
 }

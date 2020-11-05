@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kandidat/src/blocs/user_detail_provider.dart';
+import 'package:kandidat/src/blocs/user_detail_bloc_provider.dart';
 import 'package:kandidat/src/blocs/user_list_bloc.dart';
 import 'package:kandidat/src/models/user_model.dart';
 import 'package:kandidat/src/ui/user_detail.dart';
@@ -73,7 +73,7 @@ class UserListState extends State<UserList> {
   }
 
   openUserDetail(UserModel user, int index) {
-    final page = UserDetailProvider(
+    final page = UserDetailBlocProvider(
       child: UserDetail(
         id: user.id,
         user: user,
@@ -83,8 +83,8 @@ class UserListState extends State<UserList> {
     Navigator.push(
         context,
         MaterialPageRoute(builder:(context) {
-              return page;
-            }),
+          return page;
+        }),
     );
   }
 

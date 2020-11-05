@@ -24,12 +24,12 @@ class GithubApiProvider {
 
 
   Future<UserModel> fetchUser(int id) async {
-    final response = await client.get('https://api.github.com/users');
+    final response = await client.get('https://api.github.com/user/$id');
 
     if (response.statusCode >= 200 && response.statusCode <= 300) {
       final responseJSON = jsonDecode(response.body);
-      UserModel users =UserModel.fromJSON(responseJSON);
-      return users;
+      UserModel user = UserModel.fromJSON(responseJSON);
+      return user;
 
     } else {
       throw Exception('Unable to fetch Users');

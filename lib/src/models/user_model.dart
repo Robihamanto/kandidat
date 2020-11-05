@@ -10,6 +10,7 @@ class UserModel {
   String _company;
   String _location;
   String _bio;
+  String _blog;
   int _followers;
   int _following;
 
@@ -24,6 +25,7 @@ class UserModel {
     _company = parsedJSON['company'];
     _location = parsedJSON['location'];
     _bio = parsedJSON['bio'];
+    _blog = parsedJSON['blog'];
     _followers = parsedJSON['followers'];
     _following = parsedJSON['following'];
   }
@@ -39,6 +41,7 @@ class UserModel {
   String  get company => _company;
   String  get location => _location;
   String  get bio => _bio;
+  String  get blog => _blog;
   int     get followers => _followers;
   int     get following => _following;
 

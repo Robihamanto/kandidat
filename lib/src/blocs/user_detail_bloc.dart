@@ -10,7 +10,8 @@ class UserDetailBloc {
   Stream<UserModel> get user => _user;
 
   fetchUserDetail(int id) async {
-    UserModel user = await _repository.fetchUser(id);
+    final user = await _repository.fetchUser(id);
+    _user.sink.add(user);
   }
 
   dispose() {
